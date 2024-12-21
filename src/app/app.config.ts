@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -48,6 +49,7 @@ export const appConfig: ApplicationConfig = {
       MatSortModule,
       MatTooltipModule,
       MatDatepickerModule
-    )
+    ),
+    provideCharts(withDefaultRegisterables())
   ]
 };
