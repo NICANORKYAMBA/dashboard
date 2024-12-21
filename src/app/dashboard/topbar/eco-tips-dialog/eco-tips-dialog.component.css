@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  max-width: 500px;
+  margin: auto;
+}
+
+.mat-icon {
+  font-size: 1.25rem;
+}
