@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { SidebarService } from '../../sidebar.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -22,6 +23,7 @@ import { EcoTipsDialogComponent } from './eco-tips-dialog/eco-tips-dialog.compon
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatMenuModule,
     FontAwesomeModule
   ],
   templateUrl: './topbar.component.html',
@@ -31,7 +33,18 @@ export class TopbarComponent {
   faSearch = faSearch;
   isAccountMenuOpen = false;
 
-  constructor(private readonly sidebarService: SidebarService, private readonly dialog: MatDialog) {}
+  notifications = [
+    { message: 'New climate policy announced', time: '2 minutes ago' },
+    { message: 'Agricultural yield report released', time: '1 hour ago' },
+    { message: 'New research on climate change impacts', time: '3 hours ago' },
+    { message: 'Sustainable farming workshop scheduled', time: '1 day ago' },
+    // Add more notifications as needed
+  ];
+
+  constructor(
+    private readonly sidebarService: SidebarService,
+    private readonly dialog: MatDialog
+  ) { }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();

@@ -13,9 +13,22 @@
         <fa-icon [icon]="faSearch"></fa-icon>
       </button>
     </div>
-    <button mat-icon-button class="topbar-button">
+    <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="topbar-button">
       <mat-icon>notifications</mat-icon>
     </button>
+    <mat-menu #notificationMenu="matMenu" class="notification-menu">
+      <div class="p-4 w-112 bg-white rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold mb-2 text-blue-600">Notifications</h3>
+        <div *ngFor="let notification of notifications" class="flex items-start mb-2">
+          <mat-icon class="mr-2 text-blue-500">notifications</mat-icon>
+          <div>
+            <p class="text-gray-700">{{ notification.message }}</p>
+            <p class="text-sm text-gray-500">{{ notification.time }}</p>
+          </div>
+        </div>
+        <button mat-button class="w-full text-left text-blue-500 hover:text-blue-700 transition duration-300">View All</button>
+      </div>
+    </mat-menu>
     <button mat-icon-button class="topbar-button" (click)="openEcoTips()">
       <mat-icon>eco</mat-icon>
     </button>
