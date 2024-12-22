@@ -1,0 +1,17 @@
+<div class="p-6 bg-white rounded-lg shadow-lg max-w-lg mx-auto">
+  <h1 class="text-2xl font-bold mb-4 text-blue-600">Notifications</h1>
+  <div class="mb-4">
+    <ul class="space-y-4">
+      <li *ngFor="let notification of notifications" class="flex items-start">
+        <mat-icon class="mr-2 text-blue-500">notifications</mat-icon>
+        <div>
+          <p class="text-gray-700">{{ notification.message }}</p>
+          <p class="text-sm text-gray-500">{{ notification.time }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="flex justify-end">
+    <button mat-button mat-dialog-close class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Close</button>
+  </div>
+</div>
