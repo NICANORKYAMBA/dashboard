@@ -29,7 +29,7 @@
       <mat-card-title class="text-lg font-semibold card-title">Temperature Anomalies</mat-card-title>
       <mat-card-content>
         <canvas baseChart
-          [datasets]="[{ data: lineChartData, label: 'Temperature Anomalies' }]"
+          [datasets]="lineChartData"
           [labels]="lineChartLabels"
           [options]="lineChartOptions"
           [legend]="lineChartLegend"
@@ -42,7 +42,10 @@
       <mat-card-title class="text-lg font-semibold card-title">Recent Activities</mat-card-title>
       <mat-card-content>
         <ul class="list-disc pl-5 text-gray-800">
-          <li *ngFor="let activity of recentActivities">{{ activity }}</li>
+          <li *ngFor="let activity of recentActivities">
+            <strong>{{ activity.date }}:</strong> {{ activity.activity }}
+            <p class="text-sm text-gray-600">{{ activity.description }}</p>
+          </li>
         </ul>
       </mat-card-content>
     </mat-card>
@@ -57,13 +60,17 @@
           <thead class="bg-gray-50">
             <tr>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Value</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Northern Hemisphere</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Southern Hemisphere</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <tr *ngFor="let data of dataTable">
               <td class="px-6 py-4 whitespace-nowrap">{{ data.year }}</td>
-              <td class="px-6 py-4 whitespace-nowrap">{{ data.value }}</td>
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.global }}</td>
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.northern }}</td>
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.southern }}</td>
             </tr>
           </tbody>
         </table>
