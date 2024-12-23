@@ -1,0 +1,259 @@
+<div class="p-4">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Climate Data</h2>
+
+  <!-- Temperature Anomalies -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Temperature Anomalies</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="temperatureData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <ng-container matColumnDef="northern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Northern Hemisphere</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.northern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="southern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Southern Hemisphere</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.southern }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="temperatureColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: temperatureColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Sea Level Rise -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Sea Level Rise</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="seaLevelData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global (mm)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="seaLevelColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: seaLevelColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- CO2 Emissions -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">CO2 Emissions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="co2EmissionsData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global (Gt)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="co2EmissionsColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: co2EmissionsColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Seasonal Temperature Anomalies -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Seasonal Temperature Anomalies</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="seasonalTemperatureData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="season">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Season</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.season }}</td>
+        </ng-container>
+        <ng-container matColumnDef="temperature">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Temperature (°C)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.temperature }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="seasonalTemperatureColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: seasonalTemperatureColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Precipitation Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Precipitation Data</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="precipitationData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global (mm)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <ng-container matColumnDef="northern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Northern Hemisphere (mm)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.northern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="southern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Southern Hemisphere (mm)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.southern }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="precipitationColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: precipitationColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Solar Radiation Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Solar Radiation Data</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="solarRadiationData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global (W/m²)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <ng-container matColumnDef="northern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Northern Hemisphere (W/m²)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.northern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="southern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Southern Hemisphere (W/m²)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.southern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="equator">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Equator (W/m²)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.equator }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="solarRadiationColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: solarRadiationColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Wind Speed Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Wind Speed Data</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="windSpeedData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="global">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Global (m/s)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.global }}</td>
+        </ng-container>
+        <ng-container matColumnDef="northern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Northern Hemisphere (m/s)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.northern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="southern">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Southern Hemisphere (m/s)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.southern }}</td>
+        </ng-container>
+        <ng-container matColumnDef="equator">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Equator (m/s)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.equator }}</td>
+        </ng-container>
+        <ng-container matColumnDef="tropics">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tropics (m/s)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.tropics }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="windSpeedColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr mat-row *matRowDef="let row; columns: windSpeedColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- Air Quality Data -->
+   <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold text-gray-800">Air Quality Data</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="airQualityData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Index</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.index }}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.status }}</td>
+        </ng-container>
+        <ng-container matColumnDef="airQuality">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Air Quality</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.airQuality }}</td>
+        </ng-container>
+        <thead class="bg-gray-50">
+          <tr mat-header-row *matHeaderRowDef="airQualityColumns"></tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr mat-row *matRowDef="let row; columns: airQualityColumns;"></tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+    </mat-card>
+</div>
