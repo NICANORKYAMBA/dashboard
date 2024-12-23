@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { OverviewComponent } from './overview/overview.component';
 import { SidebarService } from '../sidebar.service';
 
 @Component({
@@ -39,8 +38,7 @@ import { SidebarService } from '../sidebar.service';
     MatCheckboxModule,
     MatRadioModule,
     SidebarComponent,
-    TopbarComponent,
-    OverviewComponent
+    TopbarComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']

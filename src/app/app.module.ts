@@ -5,6 +5,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SidebarComponent } from "./dashboard/sidebar/sidebar.component";
 import { TopbarComponent } from "./dashboard/topbar/topbar.component";
 import { OverviewComponent } from "./dashboard/overview/overview.component";
+import { ReportsComponent } from "./dashboard/reports/reports.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
@@ -55,7 +56,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
         DashboardComponent,
         SidebarComponent,
         TopbarComponent,
-        OverviewComponent
+        OverviewComponent,
+        ReportsComponent
     ],
     providers: [],
 })
