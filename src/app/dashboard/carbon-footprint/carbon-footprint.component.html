@@ -1,0 +1,87 @@
+<div class="w-full h-full p-4 mb-8">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Carbon Footprint</h2>
+
+  <!-- Data Table -->
+  <div class="mt-4">
+    <mat-card class="p-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Carbon Emissions Data</mat-card-title>
+      <mat-card-content>
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Emissions (Gt)</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sector</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let data of dataTable">
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.year }}</td>
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.emissions }}</td>
+              <td class="px-6 py-4 whitespace-nowrap">{{ data.sector }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Charts Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <!-- Bar Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Emissions Over Time (Bar Chart)</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [type]="barChartType"
+          [plugins]="barChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Line Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Emissions Over Time (Line Chart)</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [type]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Pie Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Emissions Distribution (Pie Chart)</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="pieChartData"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+          [type]="pieChartType"
+          [plugins]="pieChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Doughnut Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Emissions Distribution (Doughnut Chart)</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+          [legend]="doughnutChartLegend"
+          [type]="doughnutChartType"
+          [plugins]="doughnutChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
