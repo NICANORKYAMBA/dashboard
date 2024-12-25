@@ -1,0 +1,231 @@
+<div class="p-4">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Renewable Energy</h2>
+
+  <!-- Introduction Section -->
+  <div class="mb-6">
+    <p class="text-lg text-gray-700">
+      Renewable energy is energy that is collected from renewable resources, which are naturally replenished on a human timescale, such as sunlight, wind, rain, tides, waves, and geothermal heat.
+    </p>
+    <p class="text-lg text-gray-700 mt-4">
+      This section provides an overview of renewable energy production over the years, including data on solar, wind, hydro, biomass, and geothermal energy.
+    </p>
+  </div>
+
+  <!-- Data Representation Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <!-- Bar Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Bar Chart</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [type]="barChartType"
+          [plugins]="barChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Line Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Line Chart</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [type]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Pie Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Pie Chart</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="pieChartData"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+          [type]="pieChartType"
+          [plugins]="pieChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Doughnut Chart -->
+    <mat-card class="p-4 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+      <mat-card-title class="text-lg font-semibold card-title">Doughnut Chart</mat-card-title>
+      <mat-card-content>
+        <canvas baseChart
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+          [legend]="doughnutChartLegend"
+          [type]="doughnutChartType"
+          [plugins]="doughnutChartPlugins">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Renewable Energy Production Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold card-title">Renewable Energy Production</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="renewableEnergyData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="solar">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solar (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.solar }}</td>
+        </ng-container>
+        <ng-container matColumnDef="wind">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wind (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.wind }}</td>
+        </ng-container>
+        <ng-container matColumnDef="hydro">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hydro (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.hydro }}</td>
+        </ng-container>
+        <ng-container matColumnDef="biomass">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biomass (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.biomass }}</td>
+        </ng-container>
+        <ng-container matColumnDef="geothermal">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Geothermal (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.geothermal }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="renewableEnergyColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: renewableEnergyColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Energy Consumption Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold card-title">Energy Consumption</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="energyConsumptionData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="solar">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solar (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.solar }}</td>
+        </ng-container>
+        <ng-container matColumnDef="wind">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wind (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.wind }}</td>
+        </ng-container>
+        <ng-container matColumnDef="hydro">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hydro (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.hydro }}</td>
+        </ng-container>
+        <ng-container matColumnDef="biomass">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biomass (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.biomass }}</td>
+        </ng-container>
+        <ng-container matColumnDef="geothermal">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Geothermal (GWh)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.geothermal }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="energyConsumptionColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: energyConsumptionColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Capacity Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold card-title">Installed Capacity</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="capacityData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="solar">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solar (MW)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.solar }}</td>
+        </ng-container>
+        <ng-container matColumnDef="wind">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wind (MW)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.wind }}</td>
+        </ng-container>
+        <ng-container matColumnDef="hydro">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hydro (MW)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.hydro }}</td>
+        </ng-container>
+        <ng-container matColumnDef="biomass">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biomass (MW)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.biomass }}</td>
+        </ng-container>
+        <ng-container matColumnDef="geothermal">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Geothermal (MW)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.geothermal }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="capacityColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: capacityColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Investment Data -->
+  <mat-card class="p-6 mb-6 rounded-lg shadow-lg transition hover:shadow-2xl bg-white card-background card-hover">
+    <mat-card-header>
+      <mat-card-title class="text-xl font-semibold card-title">Investment in Renewable Energy</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="investmentData" class="min-w-full divide-y divide-gray-200">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="solar">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solar (Billion $)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.solar }}</td>
+        </ng-container>
+        <ng-container matColumnDef="wind">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wind (Billion $)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.wind }}</td>
+        </ng-container>
+        <ng-container matColumnDef="hydro">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hydro (Billion $)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.hydro }}</td>
+        </ng-container>
+        <ng-container matColumnDef="biomass">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biomass (Billion $)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.biomass }}</td>
+        </ng-container>
+        <ng-container matColumnDef="geothermal">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Geothermal (Billion $)</th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{ element.geothermal }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="investmentColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: investmentColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Additional Information Section -->
+  <div class="mt-6">
+    <h3 class="text-2xl font-bold text-gray-800 mb-4">Why Renewable Energy?</h3>
+    <p class="text-lg text-gray-700">
+      Renewable energy sources are essential for reducing greenhouse gas emissions and combating climate change. They provide a sustainable and clean alternative to fossil fuels, helping to preserve the environment for future generations.
+    </p>
+    <p class="text-lg text-gray-700 mt-4">
+      Investing in renewable energy also promotes energy security, creates jobs, and stimulates economic growth. By harnessing the power of natural resources, we can build a more resilient and sustainable energy system.
+    </p>
+  </div>
+</div>
